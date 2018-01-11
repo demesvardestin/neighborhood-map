@@ -1,0 +1,97 @@
+html, body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+}
+.container {
+  height: 100%;
+  position: relative;
+}
+input {
+  font-size: 12px;
+}
+h1 {
+  color: #525454;
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+#hide-listings,
+#show-listings {
+  width: 48%;
+}
+#body-row {
+  padding: 0;
+  height: 100%;
+}
+.hr {
+  height: 3px;
+  color: #fff;
+  background: #fff;
+}
+.filter {
+  color: #fff;
+}
+.search-form {
+  padding: 15px;
+  padding-right: 25px;
+}
+#search-list {
+  padding-left: 10px;
+}
+.nav-item {
+  padding-right: 10px;
+}
+.col-md-9, .col-md-3{
+  padding: 0;
+}
+.navigation-panel {
+  height: 100%;
+  background: #000;
+}
+#map {
+  padding: 0;
+  bottom:0px;
+  height: 100%;
+  right: 0px;
+}
+.options-box {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 3px;
+  height: 100%;
+  line-height: 35px;
+  padding: 10px 10px 30px 10px;
+  text-align: left;
+  width: 340px;
+}
+.error {
+  color: red;
+}
+.list {
+  color: #000;
+}
+#list {
+  color: #000;
+}
+.search-item {
+  color: blue;
+}
+.loc_link2 {
+  color: #fff;
+}
+li {
+  color: #fff;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  html, body {
+      overflow-y: visible !important;
+  }
+}

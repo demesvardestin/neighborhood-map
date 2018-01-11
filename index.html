@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Neighborhood Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Neighborhood Map</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <form data-bind="submit: doSearch">
+              <input type="text" id="input" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"">
+            <form>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Location List
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul class="all-location-list" data-bind="foreach: location_list">
+                  <a href="#" class="loc_link"><li class="list" id="" data-bind="text: name, attr: {id: loc_id}"></li></a>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item alphabetical-list" href="#" data-bind="click: alphabetical">A - Z</a>
+                <a class="dropdown-item reverse" href="#" data-bind="click: reversed">Z - A</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div id="search-list" data-bind="foreach: search_list">
+              <h5 class="search-item">Best Result: <a href="#" class="loc_link"><span class="list" data-bind="text: name, attr: {id: loc_id}"></span></a></h5>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div id="error" data-bind="with: currentError">
+              <a href="#" class="loc_link"><h5 class="" data-bind="text: name, attr: {class: err_class}"></h5></a>
+            </div>
+          </li>
+          <li class="nav-item alphabetize">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select From Filtered List
+              </a>
+
+              <div class="dropdown-menu filter-menu" aria-labelledby="dropdownMenuLink">
+                <ul data-bind="foreach: alphabetized">
+                  <a href="#" class="loc_link"><li id="list" class="" data-bind="text: name, attr: {class: loc_class}"></li></a>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row" id="body-row">
+      <div class="col-md-12">
+        <div id="map"></div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='js/lib/knockout-3.4.2.js'></script>
+    <script type='text/javascript' src="js/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAe_J4SlnKm2G7jdYBlQzpAkwp7iQujeU&callback=initMap"
+    async defer></script>
+  </body>
+</html>
