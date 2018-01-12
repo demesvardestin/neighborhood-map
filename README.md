@@ -6,7 +6,7 @@ via the Google Maps Javascript API, using KnockoutJS.
 ### Installation
 
  Either fork or copy this code into your favorite editor, make sure Javascript
- is enabled on your browser, and open the file.
+ is enabled on your browser, and open the index.html file.
 
 ### Features
 
