@@ -1,26 +1,18 @@
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+### Neighborhood Map
 
+##### Basic single-page map displaying a few locations loading asynchronously 
+##### via the Google Maps Javascript API, using KnockoutJS.
 
-Hi there! Welcome to Cloud9 IDE!
+#### Installation
 
-To get you started, we included a small hello world application.
+##### Either fork or copy this code into your favorite editor, make sure Javascript
+##### is enabled on your browser, and open the file.
 
-1) Open the hello-world.html file
+#### Features
 
-2) Click on the Preview button to open a live preview pane
+##### You can search for a location (provided it is in the list), select a location
+##### from the list, or filter all locations either alphabetically or
+##### reverse alphabetical. Click on any marker to display more details about
+##### the selected location
 
-3) Make some changes to the file, save, watch the preview, and have fun!
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+##### All feedback is appreciated.
