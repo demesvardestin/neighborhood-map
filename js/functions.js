@@ -33,14 +33,34 @@ function turnOffMarkers() {
 // Open Info Window and add details
 
 function populateInfoWindow(marker, infowindow) {
+  // return timeout error after 5 seconds of no response
+
+  var t_o = setTimeout(function() {
+    alert('Wikipedia API request timeout');
+  }, 5000);
+  
+  // Set variables proper to this function //
+
+  var url, first, second;
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
-    infowindow.setContent('<div>' + marker.title + '</div>');
+    infowindow.setContent('<div class="marker-info"><div><strong>' + marker.title + '</strong></div><div><p>Wikipedia:</p></div></div>');
     infowindow.open(map, marker);
     infowindow.addListener('closeclick',function(){
       infowindow.setMarker = null;
     });
   }
+  $.ajax({
+      url: 'http://en.wikipedia.org/w/api.php',
+      data: { action: 'query', list: 'search', srsearch: marker.title, format: 'json' },
+      dataType: 'jsonp',
+      success: function(resp) {
+        first = resp.query.search[0];
+        url = 'http://en.wikipedia.org/wiki/' + first.title.split(' ').join('_');
+        $('.marker-info').append('<a href=' + url + '><p>'+first.title+'</p></a>');
+        clearTimeout(t_o)
+      }
+  });
 };
 
 // Toggle Bounce //

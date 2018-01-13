@@ -7,15 +7,8 @@ var Location = function(data, elem=null) {
   this.loc_class = ko.observable(data.loc_class);
 };
 
-var Error = function(err) {
-  this.name = ko.observable(err.name);
-  this.err_class = ko.observable(err.err_class);
-};
 var AppView = function() {
   var self = this;
-  var e = false;
-  var err = {name: 'Location not found', err_class: 'error'}
-  this.currentError = ko.observable(new Error(err));
   this.sorted_list = ko.observableArray([]);
   this.alphabetized = ko.observableArray([]);
   this.location_list = ko.observableArray([]);
@@ -23,7 +16,6 @@ var AppView = function() {
   all_locs.forEach(function(loc) {
     self.location_list.push(new Location(loc))
   });
-  $('#error').hide();
   $('.alphabetize').hide();
   if (this.alphabetized().length > 0) {
     $('.alphabetical-list').hide();
@@ -32,31 +24,33 @@ var AppView = function() {
     self.alphabetized([]);
     $('.alphabetize').hide();
     var inputvalue = document.getElementById('input').value.toLowerCase();
+    if (inputvalue.length == 0) {
+      alert('You search is invalid. Please enter a valid search.');
+      return;
+    };
     all_locs.forEach(function(l) {
       m = markers[l.loc_id];
       m.setMap(null);
       $('.'+l.loc_class).hide();
-      if (l.name.toLowerCase().startsWith(inputvalue)) {
+      if (l.name.toLowerCase().startsWith(inputvalue) || l.name.toLowerCase().includes(inputvalue)) {
         error = false;
-        $('#error').hide();
         self.search_list.push(new Location(l));
         $('.'+l.loc_class).show();
         m.setMap(map);
-        var largeInfowindow = new google.maps.InfoWindow();
-        var bounds = new google.maps.LatLngBounds();
+        var infodetails = new google.maps.InfoWindow();
         toggleBounce(m);
-        populateInfoWindow(m, largeInfowindow);
+        populateInfoWindow(m, infodetails);
         $('#search-loc-list').show();
-        bounds.extend(m.position);
       } else {
         error_counter = error_counter + 1;
       };
     });
     if (error_counter == all_locs.length) {
       error = true;
-      $('#error').show();
       $('#search-loc-list').hide();
+      alert('Location not found');
       error_counter = 0;
+      error = false;
     };
   };
   this.alphabetical = function() {

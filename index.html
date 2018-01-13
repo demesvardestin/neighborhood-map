@@ -17,13 +17,13 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <form data-bind="submit: doSearch">
-              <input type="text" id="input" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"">
+              <input type="text" id="input" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             <form>
           </li>
           <li class="nav-item">
             <div class="dropdown show">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Location List
+                Select a location
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -47,12 +47,7 @@
           </li>
           <li class="nav-item">
             <div id="search-list" data-bind="foreach: search_list">
-              <h5 class="search-item">Best Result: <a href="#" class="loc_link"><span class="list" data-bind="text: name, attr: {id: loc_id}"></span></a></h5>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div id="error" data-bind="with: currentError">
-              <a href="#" class="loc_link"><h5 class="" data-bind="text: name, attr: {class: err_class}"></h5></a>
+              <h5 class="search-item"><a href="#" class="loc_link"><span data-bind="text: name, attr: {class: loc_class}"></span></a></h5>
             </div>
           </li>
           <li class="nav-item alphabetize">
@@ -80,7 +75,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script type='text/javascript' src='js/lib/knockout-3.4.2.js'></script>
-    <script type='text/javascript' src="js/app.js"></script>
+    <script type='text/javascript' src='js/lib/jquery.js'></script>
+    <script type='text/javascript' src="js/map.js"></script>
+    <script type='text/javascript' src="js/bindings.js"></script>
+    <script type='text/javascript' src="js/functions.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAe_J4SlnKm2G7jdYBlQzpAkwp7iQujeU&callback=initMap"
     async defer></script>
   </body>
