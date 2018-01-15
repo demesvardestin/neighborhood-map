@@ -16,12 +16,12 @@ var AppView = function() {
   this.location_list = ko.observableArray([]);
   this.search_list = ko.observableArray([]);
   all_locs.forEach(function(loc) {
-    self.location_list.push(new Location(loc))
+    self.location_list.push(new Location(loc));
   });
   $('.alphabetize').hide();
   if (this.alphabetized().length > 0) {
     $('.alphabetical-list').hide();
-  };
+  }
 
   // Search filter functionality //
   this.doSearch = function(formElement) {
@@ -32,10 +32,10 @@ var AppView = function() {
     var inputvalue = document.getElementById('input').value.toLowerCase();
 
     // Handle error if invalid search or no input //
-    if (inputvalue.length == 0) {
+    if (inputvalue.length === 0) {
       alert('You search is invalid. Please enter a valid search.');
       return;
-    };
+    }
 
     // Iterate thru locations, matching search input against location names //
     all_locs.forEach(function(l) {
@@ -53,7 +53,7 @@ var AppView = function() {
         $('#search-loc-list').show();
       } else {
         error_counter = error_counter + 1;
-      };
+      }
     });
 
     // Handle error if no location is a match //
@@ -63,15 +63,15 @@ var AppView = function() {
       alert('Location not found');
       error_counter = 0;
       error = false;
-    };
+    }
   };
 
   // Alphabetize filter //
   this.alphabetical = function() {
     self.search_list([]);
-    $('.alphabetize').show()
+    $('.alphabetize').show();
     $('#search-loc-list').hide();
-    if (_reversed == true) {
+    if (_reversed === true) {
       this.alphabetized(this.alphabetized().reverse());
       _reversed = false;
       $('.alphabetical-list').hide();
@@ -84,11 +84,11 @@ var AppView = function() {
       // New observable array created //
       for (i=0;i<all_locs.length;i++) {
         self.sorted_list.push([all_locs[i].name.slice(0,4), all_locs[i].loc_id]);
-      };
+      }
 
       // Sorted //
       var list = this.sorted_list().map(function(s) {
-        return s[0]
+        return s[0];
       }).sort();
 
       // Nested loop to iterate thru sorted array, matching components w/ location names //
@@ -99,14 +99,14 @@ var AppView = function() {
           // If location is a match, push to alphabetized array //
           if (list[i] === ll.name.slice(0,4)) {
             self.alphabetized.push(new Location(ll));
-          };
-        };
-      };
+          }
+        }
+      }
       var infowindow = new google.maps.InfoWindow();
       addListenerToFilteredElem(infowindow);
       $('.alphabetize').show();
       $('.reverse').show();
-    };
+    }
   };
 
   // Reverse alphabetical filter //

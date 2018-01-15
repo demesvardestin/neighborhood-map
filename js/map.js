@@ -57,5 +57,4 @@ function initMap() {
       populateInfoWindow(m, largeInfowindow);
     });
   });
-  // catchErrors(map, largeInfowindow, bounds);
 };

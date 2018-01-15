@@ -3,7 +3,7 @@
 function catchErrors(map, infowindow, bounds) {
   if (map == undefined) {
     alert('The map could not be displayed. Make sure that Javascript is enabled in your browser.');
-  };
+  }
 };
 
 // add event listener to select elements //
