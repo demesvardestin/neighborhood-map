@@ -43,10 +43,13 @@ function populateInfoWindow(marker, infowindow) {
   }, 5000);
   
   if (infowindow.marker != marker) {
+
     // Load geocoder to retrieve address by reverse-geocoding//
     geocoder.geocode({'location': marker.position}, function(results, status) {
       address = results[0].formatted_address;
       infowindow.marker = marker;
+
+      // Fill content //
       infowindow.setContent(
         '<div class="marker-info"><div><strong>' +
         marker.title +
@@ -59,6 +62,8 @@ function populateInfoWindow(marker, infowindow) {
       });
     });
   }
+
+  // Wikipedia API call using jsonp //
   $.ajax({
       url: 'http://en.wikipedia.org/w/api.php',
       data: { action: 'query', list: 'search', srsearch: marker.title, format: 'json' },
