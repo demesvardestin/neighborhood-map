@@ -35,6 +35,7 @@ function initMap() {
     markers.push(marker);
     marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
+      toggleBounce(this);
     });
     bounds.extend(markers[i].position);
   }
