@@ -19,11 +19,6 @@ function populateInfoWindow(marker, infowindow, off=null) {
     infowindow.setMarker = null;
     return;
   }
-
-  // return timeout error after 5 seconds of no response
-  var t_o = setTimeout(function() {
-    alert('Wikipedia API request timeout');
-  }, 5000);
   
   if (infowindow.marker != marker) {
     
@@ -34,21 +29,28 @@ function populateInfoWindow(marker, infowindow, off=null) {
 
       // Make Wikipedia API call & fill content //
       $.ajax({
-          url: 'http://en.wikipedia.org/w/api.php',
-          data: { action: 'query', list: 'search', srsearch: marker.title, format: 'json' },
-          dataType: 'jsonp',
-          success: function(resp) {
-            first = resp.query.search[0];
-            url = 'http://en.wikipedia.org/wiki/' + first.title.split(' ').join('_');
-            infowindow.setContent(
-              '<div class="marker-info"><div><strong>' +
-              marker.title +
-              '</strong></div><div><p>' + address +
-              '</p></div><div><p>Wikipedia:</p></div></div>' +
-              '<div>'+'<a href=' + url + '><p>'+first.title+'</p></a>'+'</div>'
-            );
-            clearTimeout(t_o);
-          }
+        url: 'http://en.wikipedia.org/w/api.php',
+        data: { action: 'query', list: 'search', srsearch: marker.title, format: 'json' },
+        dataType: 'jsonp',
+        success: function(resp) {
+          first = resp.query.search[0];
+          url = 'http://en.wikipedia.org/wiki/' + first.title.split(' ').join('_');
+          infowindow.setContent(
+            '<div class="marker-info"><div><strong>' +
+            marker.title +
+            '</strong></div><div><p>' + address +
+            '</p></div><div><p>Wikipedia:</p></div></div>' +
+            '<div>'+'<a href=' + url + '><p>'+first.title+'</p></a>'+'</div>'
+          );
+        }
+      }).fail(function( xhr, status, errorThrown ) {
+          infowindow.setContent(
+            '<div class="marker-info"><div><strong>' +
+            marker.title +
+            '</strong></div><div><p>' + address +
+            '</p></div><div><p>Wikipedia:</p></div></div>' +
+            '<div>'+'<p class="red">'+ 'Error loading the Wikipedia information' +'</p>'+'</div>'
+          );
       });
       infowindow.open(map, marker);
       infowindow.addListener('closeclick',function(){

@@ -16,10 +16,6 @@ var allLocs = [
 ];
 var markers = [];
 
-// Provide error handling if map error //
-
-handleMapsError();
-
 // Initialize map using Google Maps Javascript API //
 
 function initMap() {
@@ -53,7 +49,5 @@ function initMap() {
 }
 
 function handleMapsError() {
-	if (map == undefined) {
-		$('#map').append('<div class="map-error"><h3 id="map-error">' + 'The Map Could Not Be Loaded' + '</h3></div>');
-	}
+	$('#map').append('<div class="map-error"><h3 id="map-error">' + 'The Map Could Not Be Loaded' + '</h3></div>');
 }
