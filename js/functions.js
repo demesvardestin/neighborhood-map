@@ -4,7 +4,7 @@ function catchErrors(map, infowindow, bounds) {
   if (map == undefined) {
     alert('The map could not be displayed. Make sure that Javascript is enabled in your browser.');
   }
-};
+}
 
 
 // Open Info Window and add details
@@ -15,10 +15,10 @@ function populateInfoWindow(marker, infowindow, off=null) {
   var geocoder = new google.maps.Geocoder;
 
   if (off === true) {
-    infowindow.marker = marker
+    infowindow.marker = marker;
     infowindow.setMarker = null;
-    return
-  };
+    return;
+  }
 
   // return timeout error after 5 seconds of no response
   var t_o = setTimeout(function() {
@@ -47,7 +47,7 @@ function populateInfoWindow(marker, infowindow, off=null) {
               '</p></div><div><p>Wikipedia:</p></div></div>' +
               '<div>'+'<a href=' + url + '><p>'+first.title+'</p></a>'+'</div>'
             );
-            clearTimeout(t_o)
+            clearTimeout(t_o);
           }
       });
       infowindow.open(map, marker);
@@ -57,7 +57,7 @@ function populateInfoWindow(marker, infowindow, off=null) {
       });
     });
   }
-};
+}
 
 // Toggle Bounce //
 
@@ -69,7 +69,7 @@ function toggleBounce(m) {
         m.setAnimation(null);
       } else {
         m.setAnimation(google.maps.Animation.BOUNCE);
-      };
-    };
+      }
+    }
   });
 }

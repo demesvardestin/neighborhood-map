@@ -50,10 +50,10 @@ function initMap() {
     bounds.extend(markers[i].position);
   }
   map.fitBounds(bounds);
-};
+}
 
 function handleMapsError() {
 	if (map == undefined) {
 		$('#map').append('<div class="map-error"><h3 id="map-error">' + 'The Map Could Not Be Loaded' + '</h3></div>');
 	}
-};
+}

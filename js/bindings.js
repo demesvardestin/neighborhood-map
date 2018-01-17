@@ -24,7 +24,7 @@ var AppView = function() {
   this.doSearch = function(item) {
     while (self.search_list().length > 0) {
       self.search_list().pop();
-    };
+    }
 
     var bounds = new google.maps.LatLngBounds();
     var inputvalue = item.input.value;
@@ -39,7 +39,7 @@ var AppView = function() {
       map.fitBounds(bounds);
       self.location_list(self.location_list_copy());
       return;
-    };
+    }
 
     // Iterate thru locations, matching search input against location names //
     allLocs.forEach(function(l) {
