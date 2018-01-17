@@ -3,7 +3,7 @@
 Basic single-page map displaying a few locations loading asynchronously 
 via the Google Maps Javascript API, using KnockoutJS.
 
-### Installation
+#### Installation
 
  Either clone or copy this code into your favorite editor, make sure Javascript
  is enabled on your browser, and open the index.html file.
@@ -23,7 +23,7 @@ via the Google Maps Javascript API, using KnockoutJS.
  where YOUR-USERNAME is your Github username, and YOUR-REPOSITORY is the name of
  the repository.
 
-### Features
+#### Features
 
  You can search for a location (provided it is in the list), select a location
  from the list, or filter all locations either alphabetically or
