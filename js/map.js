@@ -1,4 +1,4 @@
-// Global variables map, all_locs(all locations), markers and error counter //
+// Global variables map, allLocs(all locations), markers and error counter //
 
 var map, error, _reversed;
 
@@ -6,7 +6,7 @@ var map, error, _reversed;
 var error_counter = 0;
 
 // Hand code location list (ideally, this would be retrieved from a 3rd party API) //
-var all_locs = [
+var allLocs = [
   {name: 'Queens College, City University of New York', location: {lat: 40.7380, lng: -73.8172}, loc_id: 0, loc_class: 'list0'},
   {name: 'The City College of New York', location: {lat: 40.8200, lng: -73.9493}, loc_id: 1, loc_class: 'list1'},
   {name: 'Brooklyn College', location: {lat: 40.6314, lng: -73.9544}, loc_id: 2, loc_class: 'list2'},
@@ -16,6 +16,10 @@ var all_locs = [
 ];
 var markers = [];
 
+// Provide error handling if map error //
+
+handleMapsError();
+
 // Initialize map using Google Maps Javascript API //
 
 function initMap() {
@@ -23,10 +27,10 @@ function initMap() {
     center: {lat: 40.7413549, lng: -73.9980244},
     zoom: 13
   });
-  var locations = all_locs;
+  var locations = allLocs;
   var largeInfowindow = new google.maps.InfoWindow();
   var bounds = new google.maps.LatLngBounds();
-  for (var i = 0; i < all_locs.length; i++) {
+  for (var i = 0; i < allLocs.length; i++) {
     var position = locations[i].location;
     var name = locations[i].name;
     var marker = new google.maps.Marker({
@@ -46,15 +50,10 @@ function initMap() {
     bounds.extend(markers[i].position);
   }
   map.fitBounds(bounds);
+};
 
-  // add listeners to location list //
-  markers.forEach(function(m) {
-    document.getElementById(m.id.toString()).addEventListener('click', function() {
-      turnOffMarkers();
-      $('.error').hide();
-      m.setMap(map);
-      toggleBounce(m);
-      populateInfoWindow(m, largeInfowindow);
-    });
-  });
+function handleMapsError() {
+	if (map == undefined) {
+		$('#map').append('<div class="map-error"><h3 id="map-error">' + 'The Map Could Not Be Loaded' + '</h3></div>');
+	}
 };
