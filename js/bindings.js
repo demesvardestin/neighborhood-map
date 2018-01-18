@@ -71,6 +71,8 @@ var AppView = function() {
       m.setMap(null);
       if (item.name() == m.title) {
         m.setMap(map);
+        map.panTo(m.position);
+        toggleBounce(m);
         populateInfoWindow(m, infodetails);
       }
     });

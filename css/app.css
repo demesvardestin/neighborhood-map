@@ -12,6 +12,10 @@ html, body {
 .map-error {
   padding-top: 40px;
 }
+.list:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 #map-error {
   color: red;
   text-align: center;
